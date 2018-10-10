@@ -49,22 +49,7 @@ public class CarController {
 		return "update";
 	}
 	
-//	@RequestMapping(value = "/car/add/{dealerId}", method = RequestMethod.GET)
-//	private String add(@PathVariable(value = "dealerId") Long dealerId, Model model) {
-//		CarModel car = new CarModel();
-//		DealerModel dealer = dealerService.getDealerDetailById(dealerId).get();
-//		car.setDealer(dealer);
-//		
-//		model.addAttribute("car", car);
-//		return "addCar";
-//	}
-//	
-//	@RequestMapping(value = "/car/add", method = RequestMethod.POST)
-//	private String addCarSubmit(@ModelAttribute CarModel car) {
-//		carService.addCar(car);
-//		return "add";
-//	}
-//	
+	//Latihan 2 Tutorial 5: Melakukan insert banyak mobil sekaligus
 	@RequestMapping(value = "/car/add/{dealerId}", method = RequestMethod.GET)
 	private String add(@PathVariable(value = "dealerId") Long dealerId, Model model) {
 		DealerModel dealer  = dealerService.getDealerDetailById(dealerId).get();
@@ -86,6 +71,8 @@ public class CarController {
 		return "add";
 	}
 	
+	
+	//Dynamic fields
 	@RequestMapping(value="/car/add/{dealerId}", method = RequestMethod.POST, params= {"addRow"})
 	public String addRow(@ModelAttribute DealerModel dealer, BindingResult bindingResult, Model model) {
 		if (dealer.getListCar() == null) {
